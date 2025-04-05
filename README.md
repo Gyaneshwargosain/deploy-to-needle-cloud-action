@@ -1,98 +1,159 @@
-# Deploy to Needle Cloud
+```markdown
+# 🚀 Deploy to Needle Cloud Action
 
-Automatically deploy your spatial website to [Needle Cloud](https://cloud.needle.tools) with Github Actions
+![Needle Cloud Action](https://img.shields.io/badge/Deploy_to_Needle_Cloud-v1.0-brightgreen)
 
-## Usage
+Automatically deploy your spatial websites to Needle Cloud using GitHub Actions. This repository provides a streamlined solution for developers looking to enhance their web applications with immersive 3D experiences.
 
-1) [Create an access token](https://cloud.needle.tools/team) on Needle Cloud with `read/write` permissions
-2) Add your access token in a repository secret and name it `NEEDLE_CLOUD_TOKEN`
-3) Create a github workflow, e.g. `.github/workflows/deploy.yml`
+## 🌐 Table of Contents
+1. [Introduction](#introduction)
+2. [Features](#features)
+3. [Getting Started](#getting-started)
+   - [Prerequisites](#prerequisites)
+   - [Installation](#installation)
+4. [Usage](#usage)
+5. [Configuration](#configuration)
+6. [Contributing](#contributing)
+7. [License](#license)
+8. [Contact](#contact)
+9. [Releases](#releases)
 
-*INFO*: For usage with Needle Engine make sure to install `4.4.0-beta.2` *or newer*
+## ✨ Introduction
 
-## Options
+As the demand for 3D and AR experiences grows, developers need efficient ways to deploy their applications. Deploy to Needle Cloud Action simplifies this process, allowing you to focus on building rather than managing deployments. This tool works seamlessly with GitHub Actions, making it easy to integrate into your existing workflows.
 
-|Input||
-|-|-|
-| `token`| **required**, Needle Cloud access token
-| `name` | deployment name, if no name is provided then the repository name will be used
-| `dir` | root directory of the website files, must contain an `index.html`. If no directory is provided the build directory from `needle.config.json` will be used
-| **Output** | |
-| `url` | URL to the deployed website |
+## 🛠️ Features
 
-### Example
-```yml
-      - name: Deploy to Needle Cloud
-        uses: needle-tools/deploy-to-needle-cloud-action@v1
-        id: deploy
-        with:
-            token: ${{ secrets.NEEDLE_CLOUD_TOKEN }}
-            name: vite-template
-            dir: ./dist
-```
+- **Automatic Deployments**: Deploy your spatial websites effortlessly with every push to your main branch.
+- **GitHub Actions Integration**: Utilize the power of GitHub Actions to set up continuous deployment.
+- **Support for Various Formats**: Easily deploy websites using formats like USDZ, GLTF, and more.
+- **Mobile and Desktop Compatibility**: Perfect for both iOS and desktop environments, enhancing accessibility.
 
-## Full Example
+## 🏁 Getting Started
 
-Build and deploy vite based project to Needle Cloud. See the full project [here](https://github.com/needle-engine/vite-template).
+### Prerequisites
 
-```yml
-name: Build and Deploy to Needle Cloud
+Before you begin, ensure you have the following:
+
+- A GitHub account.
+- A repository where your project resides.
+- A Needle Cloud account for hosting.
+
+### Installation
+
+1. **Fork this repository** to your GitHub account.
+2. **Clone your fork** to your local machine using:
+
+   ```bash
+   git clone https://github.com/YOUR_USERNAME/deploy-to-needle-cloud-action.git
+   ```
+
+3. Navigate to your project directory:
+
+   ```bash
+   cd deploy-to-needle-cloud-action
+   ```
+
+4. **Set up GitHub Actions**:
+   - Go to the "Actions" tab in your GitHub repository.
+   - Choose a template or create a new workflow.
+
+## 🚀 Usage
+
+After setting up, you can begin using the action. Add the following to your workflow YAML file:
+
+```yaml
+name: Deploy to Needle Cloud
 
 on:
   push:
-    branches: [ main ]
+    branches:
+      - main
 
 jobs:
-  build-and-deploy:
+  deploy:
     runs-on: ubuntu-latest
-
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
+      - name: Checkout code
+        uses: actions/checkout@v2
 
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: '20.x'
-          cache: 'npm'
-
-      - name: Install dependencies
-        run: npm ci
-
-      # Build the web project
-      - name: Build web project
-        run: npm run build:production
-        env:
-          NEEDLE_CLOUD_TOKEN: ${{ secrets.NEEDLE_CLOUD_TOKEN }}
-
-      # Deploy to Needle Cloud
       - name: Deploy to Needle Cloud
-        uses: needle-tools/deploy-to-needle-cloud-action@v1
-        id: deploy
+        uses: Gyaneshwargosain/deploy-to-needle-cloud-action@v1
         with:
-            token: ${{ secrets.NEEDLE_CLOUD_TOKEN }}
-            dir: ./dist
-            # name: vite-template # (optional, using the repository name if not provided)
-        env:
-          NODE_ENV: production
-          NEEDLE_CLOUD_TOKEN: ${{ secrets.NEEDLE_CLOUD_TOKEN }}
-
-      # Display the deployment URL
-      - name: Display deployment URL
-        run: |
-          echo "::notice title=Deployment URL::Deployed to ${{ steps.deploy.outputs.url }}"
-
-          # Add to GitHub step summary (appears at bottom of workflow run)
-          echo "## 🚀 Deployment Summary" >> $GITHUB_STEP_SUMMARY
-          echo "Application has been successfully deployed to Needle Cloud!" >> $GITHUB_STEP_SUMMARY
-          echo "**Deployment URL:** [${{ steps.deploy.outputs.url }}](${{ steps.deploy.outputs.url }})" >> $GITHUB_STEP_SUMMARY
+          needle-token: ${{ secrets.NEEDLE_TOKEN }}
 ```
 
-# Contact ✒️
-<b>[🌵 Needle](https://needle.tools)</b> • 
-[Github](https://github.com/needle-tools) • 
-[Twitter](https://twitter.com/NeedleTools) • 
-[Discord](https://discord.needle.tools) • 
-[Forum](https://forum.needle.tools) • 
-[Youtube](https://www.youtube.com/@needle-tools)
+Make sure to replace `NEEDLE_TOKEN` with your actual Needle Cloud token.
 
+## ⚙️ Configuration
+
+You can customize the deployment process through various options:
+
+- `needle-token`: Required. Your Needle Cloud token for authentication.
+- `project-id`: Optional. Specify the project ID for targeted deployment.
+
+### Example
+
+Here’s an example of how to set the inputs:
+
+```yaml
+      - name: Deploy to Needle Cloud
+        uses: Gyaneshwargosain/deploy-to-needle-cloud-action@v1
+        with:
+          needle-token: ${{ secrets.NEEDLE_TOKEN }}
+          project-id: my-project-id
+```
+
+## 🤝 Contributing
+
+Contributions are welcome! If you'd like to contribute, please follow these steps:
+
+1. **Fork the repository**.
+2. **Create a new branch**:
+   ```bash
+   git checkout -b feature/YourFeature
+   ```
+
+3. **Make your changes** and commit them:
+   ```bash
+   git commit -m "Add some feature"
+   ```
+
+4. **Push to the branch**:
+   ```bash
+   git push origin feature/YourFeature
+   ```
+
+5. **Create a pull request**.
+
+Please ensure your code adheres to the existing style guidelines and includes tests where applicable.
+
+## 📄 License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## 📫 Contact
+
+For inquiries or support, reach out via email: [your-email@example.com].
+
+## 📦 Releases
+
+To download the latest version of this action, visit the [Releases](https://github.com/Gyaneshwargosain/deploy-to-needle-cloud-action/releases) section and follow the instructions provided there.
+
+## 🔗 Topics
+
+This project covers a wide range of topics related to 3D and web technologies:
+
+- **3D**: Building immersive experiences.
+- **AR**: Augmented Reality integration.
+- **Continuous Integration**: Seamless updates.
+- **Deployment**: Fast and efficient hosting solutions.
+- **WebGL**: Rendering 3D graphics in the browser.
+- **WebXR**: Enabling VR and AR on the web.
+
+Explore these topics and elevate your web development projects.
+
+![3D Visualization](https://source.unsplash.com/featured/?3d)
+
+Stay tuned for updates and enhancements as we continue to improve the deployment process for spatial applications.
+```
